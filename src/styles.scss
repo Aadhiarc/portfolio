@@ -1,8 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
-@use 'bootstrap/scss/bootstrap'; 
+// styles.scss
 
+@use "bootstrap/scss/bootstrap" with (
+  $primary: #D4AF37,
+  $secondary: #FFFFFF,
+  $dark: #0D0D0D,
+  $light: #F5F5F5,
+  $body-bg: #0D0D0D,
+  $body-color: #FFFFFF,
+  $font-family-base: 'Sora',
+);
+
+// This should be after the Bootstrap import
 @import 'bootstrap-icons/font/bootstrap-icons.css';
 
 body {
+  background-color: #0D0D0D;
+  color: #FFFFFF;
   font-family: 'Sora', sans-serif;
+}
+.text-muted {
+  color: #6c757d !important;
 }
