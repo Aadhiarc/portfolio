@@ -1,0 +1,38 @@
+.hover-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  height: 2rem;
+  overflow: hidden;
+  min-width: 80px;
+}
+
+.text-wrapper {
+  position: relative;
+  height: 100%;
+}
+
+.text {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  width: 100%;
+  font-size: 1.2rem;
+  transform: translateY(0%);
+  transition: transform 0.3s ease;
+}
+
+.text-top {
+  top: 0;
+}
+
+.text-bottom {
+  top: 0; /* SAME TOP so they overlap */
+  transform: translateY(100%); /* Start offscreen below */
+  opacity: 0;
+}
+
+.dot {
+  color: #d4af37;
+}
