@@ -19,20 +19,13 @@
   text-align: center;
   width: 100%;
   font-size: 1.2rem;
-  transform: translateY(0%);
-  transition: transform 0.3s ease;
-}
-
-.text-top {
-  top: 0;
 }
 
 .text-bottom {
-  top: 0; /* SAME TOP so they overlap */
-  transform: translateY(100%); /* Start offscreen below */
+  top: 0; /* Not top: 100%! */
   opacity: 0;
 }
 
 .dot {
-  color: #d4af37;
+  opacity: 0;
 }

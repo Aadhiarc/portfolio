@@ -5,6 +5,7 @@ import {
   AfterViewInit,
 } from '@angular/core';
 import { gsap } from 'gsap';
+import { repeat } from 'rxjs';
 
 @Directive({
   selector: '[swapAnimate]',
@@ -30,16 +31,16 @@ export class SwapAnimateDirective implements AfterViewInit {
     if (!this.topText || !this.bottomText) return;
 
     gsap.to(this.topText, {
-      yPercent: -100, // slide up out
+      yPercent: -100,
       opacity: 0,
-      duration: 0.4,
+      duration: 1,
       ease: 'power2.out',
     });
 
     gsap.to(this.bottomText, {
-      yPercent: 0, // come to original place
+      yPercent: 0,
       opacity: 1,
-      duration: 0.4,
+      duration: 1,
       ease: 'power2.out',
     });
   }
@@ -49,16 +50,16 @@ export class SwapAnimateDirective implements AfterViewInit {
     if (!this.topText || !this.bottomText) return;
 
     gsap.to(this.topText, {
-      yPercent: 0, // back to original
+      yPercent: 0,
       opacity: 1,
-      duration: 0.4,
+      duration: 1,
       ease: 'power2.out',
     });
 
     gsap.to(this.bottomText, {
-      yPercent: 100, // move down offscreen
+      yPercent: 100,
       opacity: 0,
-      duration: 0.4,
+      duration: 1,
       ease: 'power2.out',
     });
   }
