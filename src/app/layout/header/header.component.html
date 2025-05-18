@@ -1,33 +1,72 @@
-<div class="d-flex vw-100 bg-light">
+<div class="d-flex vw-100 bg-light position-relative">
   <div
     class="container-fluid d-flex justify-content-between align-items-center py-5 mx-5"
   >
-    <!-- Left side (start) -->
     <h5 class="mb-0">Ad</h5>
 
-    <!-- Right side (end) -->
-    <div class="d-flex gap-5">
-      <!-- Each link has its own hover-container -->
+    <div class="d-none d-md-flex gap-5">
       <div class="hover-container" swapAnimate>
         <div class="text-wrapper">
-          <div class="text text-top">About</div>
-          <div class="text text-bottom">About</div>
-          <span class="dot">.</span>
+          <h4 class="text text-top">About</h4>
+          <h4 class="text text-bottom">About</h4>
         </div>
+        <span class="dot">.</span>
       </div>
       <div class="hover-container" swapAnimate>
         <div class="text-wrapper">
-          <div class="text text-top">Blog</div>
-          <div class="text text-bottom">Blog</div>
-          <span class="dot">.</span>
+          <h4 class="text text-top">Blog</h4>
+          <h4 class="text text-bottom">Blog</h4>
         </div>
+        <span class="dot">.</span>
       </div>
       <div class="hover-container" swapAnimate>
         <div class="text-wrapper">
-          <div class="text text-top">Contact</div>
-          <div class="text text-bottom">Contact</div>
-          <span class="dot">.</span>
+          <h4 class="text text-top">Contact</h4>
+          <h4 class="text text-bottom">Contact</h4>
         </div>
+        <span class="dot">.</span>
+      </div>
+    </div>
+
+    <div class="d-flex d-md-none" (click)="toggleMenu()">
+      <h4 class="menu-title" #menuTitle>{{ isMenuOpen ? "Close" : "Menu" }}</h4>
+    </div>
+  </div>
+
+  <div
+    #dropdownMenu
+    class="dropdown-menu-mobile w-100 px-4 py-3 border-top d-md-none position-absolute"
+  >
+    <div>
+      <h6 class="text-start fw-normal py-4">NAVIGATION</h6>
+    </div>
+    <div class="py-2" style="font-size: 2.5rem">
+      <a href="#" class="text-decoration-none">About</a>
+    </div>
+    <div class="py-2" style="font-size: 2.5rem">
+      <a href="#" class="text-decoration-none">Blog</a>
+    </div>
+    <div class="py-2" style="font-size: 2.5rem">
+      <a href="#" class="text-decoration-none">Contact</a>
+    </div>
+
+    <hr class="mt-5 mb-3" />
+
+    <div class="d-flex">
+      <div class="d-flex gap-3">
+        <a
+          href="https://www.instagram.com/"
+          target="_blank"
+          class="icon-circle"
+        >
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.facebook.com/" target="_blank" class="icon-circle">
+          <i class="fa-brands fa-facebook"></i>
+        </a>
+        <a href="https://www.linkedin.com/" target="_blank" class="icon-circle">
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
       </div>
     </div>
   </div>
