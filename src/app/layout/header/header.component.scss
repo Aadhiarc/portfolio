@@ -1,3 +1,7 @@
+.header-container {
+  background-color: rgb(246, 247, 245);
+}
+
 .hover-container {
   position: relative;
   display: inline-block;
@@ -5,6 +9,8 @@
   height: 2rem;
   overflow: hidden;
   min-width: 80px;
+
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .text-wrapper {
@@ -48,8 +54,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   background-color: #e9ece5;
   border: 1px solid #dcded8; // subtle light grey border
@@ -60,4 +66,13 @@
   i {
     font-size: 18px;
   }
+}
+
+.text-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  height: auto;
+  overflow: hidden;
+  color: rgba(0, 0, 0, 0.7);
 }

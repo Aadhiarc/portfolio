@@ -15,11 +15,11 @@ export class HeaderComponent implements AfterViewInit {
 
   @ViewChild('menuTitle') menuTitle!: ElementRef;
   @ViewChild('dropdownMenu') dropdownMenu!: ElementRef;
-
+  @ViewChild('textContainer') textContainer!: ElementRef;
   toggleMenu() {
     const menuHeading = this.menuTitle.nativeElement;
     const dropdown = this.dropdownMenu.nativeElement;
-
+    const textContainer = this.textContainer.nativeElement;
     gsap.to(menuHeading, {
       duration: 0.3,
       opacity: 0,
