@@ -27,7 +27,7 @@ export class ScrambleDirective implements AfterViewInit {
     gsap.to(this.text, {
       duration: 1,
       scrambleText: {
-        text: 'Aadhi',
+        text: 'To get in touch',
         chars: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',
         revealDelay: 0.5,
         speed: 0.3,
