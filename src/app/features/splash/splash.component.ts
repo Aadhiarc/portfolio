@@ -15,7 +15,18 @@ export class SplashComponent implements OnInit, AfterViewInit {
       type: 'chars',
     });
 
+    const chars = split.chars;
     const percent = { value: 0 };
+
+    const fadeInDuration = 1;
+    const fadeOutDuration = 1;
+    const fadeInStagger = 0.05;
+    const fadeOutStagger = 0.05;
+
+    const fadeInTime = fadeInDuration + fadeInStagger * (chars.length - 1);
+    const fadeOutTime = fadeOutDuration + fadeOutStagger * (chars.length - 1);
+
+    const totalDuration = fadeInTime + fadeOutTime;
 
     const timeline = gsap.timeline({
       onUpdate: () => {
@@ -27,60 +38,58 @@ export class SplashComponent implements OnInit, AfterViewInit {
       },
     });
 
-    // Animate percent and character entry together
     timeline.to(
       percent,
       {
         value: 100,
-        duration: 2,
-        ease: 'power4.out',
+        duration: totalDuration,
+        ease: 'linear',
       },
       0
     );
 
     timeline.from(
-      split.chars,
+      chars,
       {
         x: -150,
         opacity: 0,
-        duration: 2,
+        duration: fadeInDuration,
         ease: 'power4.inOut',
         stagger: {
-          each: 0.05,
+          each: fadeInStagger,
           from: 'start',
         },
       },
       0
     );
 
-    // Animate both split chars and percentage text out together
     timeline.to(
-      split.chars,
+      chars,
       {
         y: -50,
         opacity: 0,
-        duration: 1,
+        duration: fadeOutDuration,
         ease: 'power4.out',
         stagger: {
-          each: 0.05,
+          each: fadeOutStagger,
           from: 'end',
         },
       },
-      'fadeOut'
-    ); // using a label for synchronization
+      fadeInTime
+    );
 
     timeline.to(
       '#loadingText',
       {
         y: -20,
         opacity: 0,
-        duration: 1,
+        duration: fadeOutDuration,
         ease: 'power4.out',
       },
-      'fadeOut'
-    ); // syncs with the split.chars out animation
+      totalDuration
+    );
 
-    timeline.timeScale(2.0);
+    timeline.timeScale(1.5);
   }
 
   ngOnInit(): void {}

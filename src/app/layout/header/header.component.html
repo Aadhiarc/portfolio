@@ -1,6 +1,6 @@
 <div class="d-flex vw-100 position-relative header-container">
   <div
-    class="container-fluid d-flex justify-content-between align-items-center py-md-4 mx-md-4 py-2 mx-2"
+    class="container-fluid d-flex justify-content-between align-items-center pt-md-3 mx-md-2 py-2 mx-2"
   >
     <h5 class="d-none d-md-block mb-0">Aadhi.</h5>
     <img
@@ -11,25 +11,18 @@
       class="logo d-block d-md-none mb-0"
     />
 
-    <div class="d-none d-md-flex gap-5">
-      <div class="hover-container" swapAnimate>
+    <div class="d-none d-md-flex gap-4">
+      <div
+        class="hover-container"
+        *ngFor="let header of listOfHeaders; let i = index"
+        swapAnimate
+      >
         <div class="text-wrapper">
-          <h4 class="text text-top">About</h4>
-          <h4 class="text text-bottom">About</h4>
-        </div>
-        <span class="dot">.</span>
-      </div>
-      <div class="hover-container" swapAnimate>
-        <div class="text-wrapper">
-          <h4 class="text text-top">Blog</h4>
-          <h4 class="text text-bottom">Blog</h4>
-        </div>
-        <span class="dot">.</span>
-      </div>
-      <div class="hover-container" swapAnimate>
-        <div class="text-wrapper">
-          <h4 class="text text-top">Contact</h4>
-          <h4 class="text text-bottom">Contact</h4>
+          <h4 class="text text-top">{{ header.title }}</h4>
+          <h4 class="text text-bottom underline-title" flipAnimate>
+            {{ header.title }}
+            <span class="underline"></span>
+          </h4>
         </div>
         <span class="dot">.</span>
       </div>
@@ -53,25 +46,13 @@
         NAVIGATION
       </h6>
     </div>
-    <div style="font-size: 2rem">
-      <a href="#" class="text-decoration-none text-container" #textContainer
-        >Home</a
-      >
-    </div>
-    <div style="font-size: 2rem">
-      <a href="#" class="text-decoration-none text-container" #textContainer
-        >About</a
-      >
-    </div>
-    <div style="font-size: 2rem">
-      <a href="#" class="text-decoration-none text-container" #textContainer
-        >Blog</a
-      >
-    </div>
-    <div style="font-size: 2rem">
-      <a href="#" class="text-decoration-none text-container" #textContainer
-        >Contact</a
-      >
+    <div
+      *ngFor="let header of listOfHeaders; let i = index"
+      style="font-size: 2rem"
+    >
+      <a href="#" class="text-decoration-none text-container" #textContainer>{{
+        header.title
+      }}</a>
     </div>
 
     <hr class="mt-5 mb-3" />

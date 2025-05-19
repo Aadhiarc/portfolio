@@ -1,21 +1,30 @@
-import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  ViewChild,
+  AfterViewInit,
+  inject,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SwapAnimateDirective } from '../../shared/directives/swap-animate.directive';
 import { gsap } from 'gsap';
+import { FirebaseService } from '../../core/service/firebase.service';
+import { FlipAnimateDirective } from '../../shared/directives/flip-animate.directive';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, SwapAnimateDirective],
+  imports: [CommonModule, SwapAnimateDirective, FlipAnimateDirective],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent implements AfterViewInit {
   isMenuOpen = false;
-
   @ViewChild('menuTitle') menuTitle!: ElementRef;
   @ViewChild('dropdownMenu') dropdownMenu!: ElementRef;
   @ViewChild('textContainer') textContainer!: ElementRef;
+  private firebaseService = inject(FirebaseService);
+  listOfHeaders: any[] = [];
   toggleMenu() {
     const menuHeading = this.menuTitle.nativeElement;
     const dropdown = this.dropdownMenu.nativeElement;
@@ -66,6 +75,9 @@ export class HeaderComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    // no-op now, since element always exists
+    this.firebaseService.getHeaders().subscribe((data: any) => {
+      console.log(data);
+      this.listOfHeaders = data;
+    });
   }
 }

@@ -9,9 +9,7 @@ import { HeaderComponent } from '../../layout/header/header.component';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit, AfterViewInit {
-  ngAfterViewInit(): void {
-    throw new Error('Method not implemented.');
-  }
+  ngAfterViewInit(): void {}
   private router: Router = inject(Router);
   ngOnInit(): void {}
 }
