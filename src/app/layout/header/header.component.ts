@@ -9,12 +9,18 @@ import { CommonModule } from '@angular/common';
 import { SwapAnimateDirective } from '../../shared/directives/swap-animate.directive';
 import { gsap } from 'gsap';
 import { FirebaseService } from '../../core/service/firebase.service';
-import { FlipAnimateDirective } from '../../shared/directives/flip-animate.directive';
+import UnderlineAnimateDirective from '../../shared/directives/underline-animate.directive';
+import { ScrambleDirective } from '../../shared/directives/scramble.directive';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, SwapAnimateDirective, FlipAnimateDirective],
+  imports: [
+    CommonModule,
+    SwapAnimateDirective,
+    UnderlineAnimateDirective,
+    ScrambleDirective,
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })

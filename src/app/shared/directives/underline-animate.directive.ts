@@ -5,13 +5,12 @@ import {
   HostListener,
 } from '@angular/core';
 import { gsap } from 'gsap';
-import SplitType from 'split-type';
 
 @Directive({
-  selector: '[flipAnimate]',
+  selector: '[underlineAnimate]',
   standalone: true,
 })
-export class FlipAnimateDirective implements AfterViewInit {
+export default class UnderlineAnimateDirective implements AfterViewInit {
   private title!: HTMLElement;
   private underline: HTMLElement | null = null;
 
