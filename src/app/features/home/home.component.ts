@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { AfterViewInit, Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { HeaderComponent } from '../../layout/header/header.component';
 
@@ -8,7 +8,10 @@ import { HeaderComponent } from '../../layout/header/header.component';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
+  ngAfterViewInit(): void {
+    throw new Error('Method not implemented.');
+  }
   private router: Router = inject(Router);
   ngOnInit(): void {}
 }
