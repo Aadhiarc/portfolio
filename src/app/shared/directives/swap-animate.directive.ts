@@ -40,7 +40,7 @@ export class SwapAnimateDirective implements AfterViewInit {
     });
 
     gsap.to(this.bottomText, {
-      yPercent: 0,
+      yPercent: -10,
       opacity: 1,
       duration: 0.4,
       ease: 'power2.out',

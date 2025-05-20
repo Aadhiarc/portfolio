@@ -1,10 +1,18 @@
-<div class="d-flex vw-100 position-relative header-container">
+<div class="d-flex vw-100 position-relative header-container bg-light">
   <div
     class="container-fluid d-flex justify-content-between pt-md-3 mx-md-2 py-2 mx-2"
   >
-    <div class="d-flex d-md-none align-items-center" (click)="toggleMenu()">
+    <!-- <div class="d-flex d-md-none align-items-center" (click)="toggleMenu()">
       <h4 class="menu-title" #menuTitle>{{ isMenuOpen ? "Close" : "Menu" }}</h4>
+    </div> -->
+    <div class="d-flex align-items-center d-md-none" (click)="toggleMenu()">
+      <div class="hamburger" id="hamburger">
+        <span class="line line-1"></span>
+        <span class="line line-2"></span>
+        <span class="line line-3"></span>
+      </div>
     </div>
+
     <div class="d-none d-md-flex gap-4">
       <div
         class="hover-container"
@@ -12,7 +20,9 @@
         swapAnimate
       >
         <div class="text-wrapper">
-          <h4 class="text text-top">{{ header.title }}</h4>
+          <h4 class="text text-top">
+            {{ header.title }}
+          </h4>
           <h4 class="text text-bottom underline-title" underlineAnimate>
             {{ header.title }}
             <span class="underline"></span>
