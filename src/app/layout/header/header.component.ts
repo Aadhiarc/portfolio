@@ -10,7 +10,7 @@ import { SwapAnimateDirective } from '../../shared/directives/swap-animate.direc
 import { gsap } from 'gsap';
 import { FirebaseService } from '../../core/service/firebase.service';
 import UnderlineAnimateDirective from '../../shared/directives/underline-animate.directive';
-import { ScrambleDirective } from '../../shared/directives/scramble.directive';
+import { ClickAnimateDirective } from '../../shared/directives/click-animate.directive';
 
 @Component({
   selector: 'app-header',
@@ -19,7 +19,7 @@ import { ScrambleDirective } from '../../shared/directives/scramble.directive';
     CommonModule,
     SwapAnimateDirective,
     UnderlineAnimateDirective,
-    ScrambleDirective,
+    ClickAnimateDirective,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',

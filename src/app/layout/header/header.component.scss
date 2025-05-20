@@ -105,3 +105,36 @@
     transition: background-color 0.3s ease;
   }
 }
+
+.link {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+  position: relative;
+  cursor: pointer;
+  vertical-align: middle;
+  font-size: 1rem;
+  span.dot {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    left: -10px;
+    top: 25%;
+    background-color: transparent;
+    border: 1.5px solid rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    opacity: 1;
+    transition: all 0.3s ease;
+  }
+  span.underline {
+    position: absolute;
+    right: 0;
+    bottom: 2px;
+    width: 100%;
+    height: 1.5px;
+    background-color: #000;
+    transform-origin: right;
+    transform: scaleX(100%);
+  }
+}
