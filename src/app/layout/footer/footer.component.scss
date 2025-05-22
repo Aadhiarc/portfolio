@@ -1,0 +1,36 @@
+.footer-text {
+  position: relative;
+  font-size: 0.8rem;
+  text-align: start;
+  color: rgb(0, 0, 0, 0.7);
+  display: inline-block;
+  width: max-content;
+
+  .underline {
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 1px;
+    background-color: black;
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+}
+
+.mail {
+  position: relative;
+  a {
+    text-decoration: none;
+  }
+  .underline {
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 1px;
+    background-color: black;
+    transform: scaleX(1);
+    transform-origin: right;
+  }
+}

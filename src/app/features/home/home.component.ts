@@ -3,12 +3,13 @@ import { Router } from '@angular/router';
 import { HeaderComponent } from '../../layout/header/header.component';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { FooterComponent } from '../../layout/footer/footer.component';
 
 gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-home',
-  imports: [HeaderComponent],
+  imports: [HeaderComponent, FooterComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })

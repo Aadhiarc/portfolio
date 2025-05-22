@@ -17,7 +17,7 @@ export class ClickAnimateDirective implements AfterViewInit {
   ngAfterViewInit(): void {
     this.underline = this.el.nativeElement.querySelector('.underline');
     this.dot = this.el.nativeElement.querySelector('.dot');
-    this.text = this.el.nativeElement.querySelector('.link');
+    this.text = this.el.nativeElement;
   }
 
   @HostListener('mouseenter')
@@ -27,16 +27,16 @@ export class ClickAnimateDirective implements AfterViewInit {
       duration: 0.3,
       ease: 'power2.out',
     });
-    gsap.to(this.dot, {
-      scale: 5,
-      duration: 0.3,
-      ease: 'power2.out',
-    });
-    gsap.to(this.el, {
-      x: 10,
-      duration: 0.3,
-      ease: 'power2.out',
-    });
+    // gsap.to(this.dot, {
+    //   scale: 3,
+    //   duration: 0.3,
+    //   ease: 'power2.out',
+    // });
+    // gsap.to(this.text, {
+    //   x: 10,
+    //   duration: 0.3,
+    //   ease: 'power2.out',
+    // });
   }
 
   @HostListener('mouseleave')
@@ -46,15 +46,15 @@ export class ClickAnimateDirective implements AfterViewInit {
       duration: 0.3,
       ease: 'power2.out',
     });
-    gsap.to(this.dot, {
-      scale: 1,
-      duration: 0.3,
-      ease: 'power2.out',
-    });
-    gsap.to(this.el, {
-      x: 0,
-      duration: 0.3,
-      ease: 'power2.out',
-    });
+    // gsap.to(this.dot, {
+    //   scale: 1,
+    //   duration: 0.3,
+    //   ease: 'power2.out',
+    // });
+    // gsap.to(this.text, {
+    //   x: 0,
+    //   duration: 0.3,
+    //   ease: 'power2.out',
+    // });
   }
 }
