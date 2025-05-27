@@ -1,71 +1,17 @@
 <app-header></app-header>
 <div
-  class="home-content container d-flex flex-column align-items-center py-5"
+  class="home-content container-fluid d-flex flex-column align-items-center px-5 py-5"
   style="overflow-y: hidden"
 >
-  <!-- Hero Section -->
-  <section class="hero text-center my-5">
-    <h1>John Doe</h1>
-    <h2>Designer & Developer</h2>
-    <p>Creating beautiful and functional websites that tell your story.</p>
-  </section>
-
-  <!-- Portfolio Section -->
-  <section class="portfolio my-5">
-    <h3 class="mb-4">My Work</h3>
-    <div class="row">
-      <div class="col-md-4 mb-3">
-        <div class="card h-100">
-          <img src="assets/project1.jpg" class="card-img-top" alt="Project 1" />
-          <div class="card-body">
-            <h4 class="card-title">Project 1</h4>
-            <p class="card-text">
-              A brief description of the project goes here.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-3">
-        <div class="card h-100">
-          <img src="assets/project2.jpg" class="card-img-top" alt="Project 2" />
-          <div class="card-body">
-            <h4 class="card-title">Project 2</h4>
-            <p class="card-text">
-              A brief description of the project goes here.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-3">
-        <div class="card h-100">
-          <img src="assets/project3.jpg" class="card-img-top" alt="Project 3" />
-          <div class="card-body">
-            <h4 class="card-title">Project 3</h4>
-            <p class="card-text">
-              A brief description of the project goes here.
-            </p>
-          </div>
-        </div>
+  <section class="about-me container-fluid">
+    <div class="d-flex justify-content-start">
+      <div class="col-md-8">
+        <h4>About Me</h4>
+        <p>
+          {{ this.aboutMe }}
+        </p>
       </div>
     </div>
-  </section>
-
-  <!-- About Section -->
-  <section class="about text-center my-5">
-    <h3>About Me</h3>
-    <p>
-      I am a dedicated developer with a penchant for creating clean, responsive
-      designs and engaging user experiences.
-    </p>
-  </section>
-
-  <!-- Contact Section -->
-  <section class="contact text-center my-5">
-    <h3>Contact</h3>
-    <p>
-      Interested in working together?<br />
-      Email me at <a href="mailto:john.doe@example.com">aadhi</a>
-    </p>
   </section>
 </div>
 <app-footer></app-footer>

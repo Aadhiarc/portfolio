@@ -19,4 +19,14 @@ export class FirebaseService {
       })
     );
   }
+
+  getAbout(): Observable<any> {
+    const docRef = doc(this.firestore, 'portfolio', 'home');
+    return from(
+      getDoc(docRef).then((snapshot) => {
+        const data = snapshot.data();
+        return data?.['aboutMe'] || [];
+      })
+    );
+  }
 }

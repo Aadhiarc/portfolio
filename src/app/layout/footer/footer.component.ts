@@ -24,7 +24,6 @@ export class FooterComponent implements AfterViewInit {
   listOfHeaders: any[] = [];
   ngAfterViewInit(): void {
     this.firebaseService.getHeaders().subscribe((data: any) => {
-      console.log(data);
       this.listOfHeaders = data;
     });
     if (this.mail && this.mail.nativeElement) {
