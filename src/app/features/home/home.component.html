@@ -3,13 +3,94 @@
   class="home-content container-fluid d-flex flex-column align-items-center px-5 py-5"
   style="overflow-y: hidden"
 >
-  <section class="about-me container-fluid">
-    <div class="d-flex justify-content-start">
-      <div class="col-md-8">
-        <h4>About Me</h4>
-        <p>
-          {{ this.aboutMe }}
-        </p>
+  <!-- ABOUT ME-->
+  <section class="about-me container-fluid vh-100 d-flex">
+    <div class="container-fluid">
+      <div class="row justify-content-start">
+        <div class="col-md-8">
+          <h4 class="mb-2 fw-medium">I'm</h4>
+          <h2
+            class="fw-bold text-primary"
+            [appWordRotator]="[
+              'Aadhi',
+              'Android Developer',
+              'Front-End Developer',
+              'Gamer',
+              'Lifter',
+              'Thrillophile'
+            ]"
+          ></h2>
+
+          <p class="lead lh-md fw-small">
+            {{ this.aboutMe }}
+          </p>
+          <div class="d-flex gap-3">
+            <div
+              class="card shadow-sm p-3 d-flex flex-column"
+              style="width: auto; height: auto; overflow: hidden"
+            >
+              <p class="p-0 m-0 fw-medium">Learn More</p>
+            </div>
+            <div
+              class="card shadow-sm p-3 d-flex flex-column"
+              style="width: auto; height: auto; overflow: hidden"
+            >
+              <p class="p-0 m-0 fw-medium">See My Projects</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 d-flex justify-content-center">
+          <div
+            class="photo-frame overflow-hidden rounded-4 shadow-lg"
+            style="width: 100%; max-width: 280px; height: 400px"
+            id="photoContainer"
+          >
+            <img
+              src="assets/images/profile_pic.jpg"
+              alt="Aadhi"
+              class="img-fluid h-100 w-100 object-fit-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- SKILLS AND TECHNOLOGY -->
+  <section class="skills container-fluid vh-100 d-flex">
+    <div class="container-fluid">
+      <div class="row justify-content-start">
+        <div class="col">
+          <h4 class="mb-2">Skills and Technologies</h4>
+          <p>
+            I specialize in building efficient and scalable mobile and web
+            applications using modern technologies. My expertise spans across
+            Android development, Java, Kotlin, Firebase, and RESTful APIs, along
+            with a strong grasp of UI/UX principles and software architecture
+            patterns like MVVM.
+          </p>
+          <div class="row g-4">
+            <div class="col-md-4" id="card-1">
+              <div
+                class="card shadow-sm p-3 d-flex flex-column"
+                style="
+                  max-width: 300px;
+                  min-height: 150px;
+                  max-height: 250px;
+                  overflow: hidden;
+                "
+              >
+                <div class="d-flex align-items-center mb-2">
+                  <i class="bi bi-phone fs-2 text-primary me-2"></i>
+                  <h6 class="card-title fw-bold mb-0">Android Development</h6>
+                </div>
+                <p class="card-text small mb-0">
+                  Skilled in building native Android apps using Java, Kotlin,
+                  and Jetpack libraries.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>

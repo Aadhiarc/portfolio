@@ -5,12 +5,13 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FooterComponent } from '../../layout/footer/footer.component';
 import { FirebaseService } from '../../core/service/firebase.service';
+import { WordRotatorDirective } from '../../shared/directives/word-rotator.directive';
 
 gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-home',
-  imports: [HeaderComponent, FooterComponent],
+  imports: [HeaderComponent, FooterComponent, WordRotatorDirective],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
@@ -22,7 +23,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.fireStoreService.getAbout().subscribe((about) => {
       this.aboutMe = about;
     });
+    //scroll handling
     this.headerScroll();
+    //profile handling
+    this.profileAnimation();
   }
   ngOnInit(): void {}
 
@@ -67,5 +71,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
         },
       });
     }
+  }
+
+  profileAnimation() {
+    gsap.from('#photoContainer', {
+      scrollTrigger: '#photoContainer',
+      y: 80,
+      opacity: 0,
+      duration: 1.2,
+      ease: 'power3.out',
+    });
   }
 }

@@ -4,6 +4,7 @@ import {
   ViewChild,
   AfterViewInit,
   inject,
+  OnInit,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SwapAnimateDirective } from '../../shared/directives/swap-animate.directive';
@@ -11,6 +12,7 @@ import { gsap } from 'gsap';
 import { FirebaseService } from '../../core/service/firebase.service';
 import UnderlineAnimateDirective from '../../shared/directives/underline-animate.directive';
 import { ClickAnimateDirective } from '../../shared/directives/click-animate.directive';
+import { ThemeService } from '../../core/service/theme.service';
 
 @Component({
   selector: 'app-header',
@@ -24,7 +26,7 @@ import { ClickAnimateDirective } from '../../shared/directives/click-animate.dir
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-export class HeaderComponent implements AfterViewInit {
+export class HeaderComponent implements AfterViewInit, OnInit {
   isMenuOpen = false;
   @ViewChild('menuTitle') menuTitle!: ElementRef;
   @ViewChild('dropdownMenu') dropdownMenu!: ElementRef;
@@ -33,6 +35,10 @@ export class HeaderComponent implements AfterViewInit {
   private firebaseService = inject(FirebaseService);
   listOfHeaders: any[] = [];
   private menuIconTl!: gsap.core.Timeline;
+  private themeService = inject(ThemeService);
+  ngOnInit(): void {
+    this.themeService.loadStoredTheme();
+  }
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
     const dropdown = this.dropdownMenu.nativeElement;
@@ -102,5 +108,9 @@ export class HeaderComponent implements AfterViewInit {
         },
         0
       );
+  }
+
+  toggleTheme(event: any): void {
+    this.themeService.toggleDarkTheme(event.target.checked);
   }
 }

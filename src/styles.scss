@@ -2,28 +2,37 @@
 
 @use "bootstrap/scss/bootstrap" with (
   $primary: #000000,
-  // Black
   $secondary: #ffffff,
-  // White
   $dark: #000000,
   $light: #ffffff,
   $body-bg: #ffffff,
-  // White background
   $body-color: #000000,
-  // Black text
   $font-family-base: "Sora"
 );
 
-// Import Bootstrap Icons (after Bootstrap)
 @import "bootstrap-icons/font/bootstrap-icons.css";
 
-// Global body styles
+// Define light theme variables
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --secondary-text: #6c757d;
+}
+
+// Define dark theme variables under .dark-theme class
+.dark-theme {
+  --bg-color: #000000;
+  --text-color: #ffffff;
+  --secondary-text: #a0a0a0;
+}
+
+// Apply variables globally
 body {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   font-family: "Sora", sans-serif;
 }
 
 .text-muted {
-  color: #6c757d !important;
+  color: var(--secondary-text) !important;
 }
