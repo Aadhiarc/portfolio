@@ -20,3 +20,243 @@ app-header {
   transform: scale(1.03);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
 }
+// .hover-outline {
+//   position: relative;
+//   border: 2px solid transparent;
+//   transition: border-color 0.3s ease;
+// }
+
+// .hover-outline::before {
+//   content: "";
+//   position: absolute;
+//   inset: 0;
+//   border: 2px solid #007bff;
+//   transform: scaleX(0);
+//   transform-origin: left;
+//   transition: transform 0.4s ease;
+//   pointer-events: none;
+//   z-index: 1;
+// }
+
+// .hover-outline:hover::before {
+//   transform: scaleX(1);
+// }
+
+// .custom-border-card {
+//   position: relative;
+//   overflow: hidden;
+//   padding: 1rem;
+//   border: none;
+//   background: white;
+// }
+
+// .custom-border-card::before {
+//   content: "";
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   pointer-events: none;
+//   box-sizing: border-box;
+//   border: 2px solid transparent;
+//   z-index: 1;
+// }
+
+// .custom-border-card:hover::before {
+//   animation: borderDraw 2s linear forwards;
+// }
+
+// @keyframes borderDraw {
+//   0% {
+//     border-bottom-color: #007bff;
+//     border-right-color: transparent;
+//     border-top-color: transparent;
+//     border-left-color: transparent;
+//     width: 0%;
+//     height: 0%;
+//     top: 100%;
+//     left: 0;
+//   }
+//   25% {
+//     border-bottom-color: #007bff;
+//     width: 100%;
+//     height: 0%;
+//     top: 100%;
+//     left: 0;
+//   }
+//   50% {
+//     border-right-color: #007bff;
+//     height: 100%;
+//     top: 0;
+//     left: 100%;
+//   }
+//   75% {
+//     border-top-color: #007bff;
+//     width: 100%;
+//     height: 100%;
+//     top: 0;
+//     left: 0;
+//   }
+//   100% {
+//     border-left-color: #007bff;
+//     width: 100%;
+//     height: 100%;
+//     top: 0;
+//     left: 0;
+//   }
+// }
+
+.custom-border-card {
+  position: relative;
+  padding: 1rem;
+  background: #fff;
+  width: fit-content;
+  overflow: hidden;
+}
+
+/* Base style for all border lines */
+.border-line {
+  position: absolute;
+  background-color: #007bff;
+  pointer-events: none;
+}
+
+/* Positioning (initial width/height set to full so we can animate to 0%) */
+.border-line.bottom {
+  height: 2px;
+  width: 0%;
+  bottom: 0;
+  left: 0;
+}
+
+.border-line.right {
+  width: 2px;
+  height: 0%;
+  top: 0;
+  right: 0;
+}
+
+.border-line.top {
+  height: 2px;
+  width: 0%;
+  top: 0;
+  right: 0;
+}
+
+.border-line.left {
+  width: 2px;
+  height: 0%;
+  bottom: 0;
+  left: 0;
+}
+
+/* Animate on hover (forwards) */
+.custom-border-card:hover .border-line.bottom {
+  animation: draw-bottom 0.3s forwards;
+  animation-delay: 0s;
+}
+
+.custom-border-card:hover .border-line.right {
+  animation: draw-right 0.3s forwards;
+  animation-delay: 0.3s;
+}
+
+.custom-border-card:hover .border-line.top {
+  animation: draw-top 0.3s forwards;
+  animation-delay: 0.6s;
+}
+
+.custom-border-card:hover .border-line.left {
+  animation: draw-left 0.3s forwards;
+  animation-delay: 0.9s;
+}
+
+/* Animate reverse when not hovered */
+.custom-border-card:not(:hover) .border-line.bottom {
+  animation: draw-bottom-reverse 0.3s forwards;
+  animation-delay: 0.9s;
+}
+
+.custom-border-card:not(:hover) .border-line.right {
+  animation: draw-right-reverse 0.3s forwards;
+  animation-delay: 0.6s;
+}
+
+.custom-border-card:not(:hover) .border-line.top {
+  animation: draw-top-reverse 0.3s forwards;
+  animation-delay: 0.3s;
+}
+
+.custom-border-card:not(:hover) .border-line.left {
+  animation: draw-left-reverse 0.3s forwards;
+  animation-delay: 0s;
+}
+
+/* Forward animations */
+@keyframes draw-bottom {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes draw-right {
+  from {
+    height: 0%;
+  }
+  to {
+    height: 100%;
+  }
+}
+@keyframes draw-top {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes draw-left {
+  from {
+    height: 0%;
+  }
+  to {
+    height: 100%;
+  }
+}
+
+/* Reverse animations */
+@keyframes draw-bottom-reverse {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+@keyframes draw-right-reverse {
+  from {
+    height: 100%;
+  }
+  to {
+    height: 0%;
+  }
+}
+@keyframes draw-top-reverse {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+@keyframes draw-left-reverse {
+  from {
+    height: 100%;
+  }
+  to {
+    height: 0%;
+  }
+}
