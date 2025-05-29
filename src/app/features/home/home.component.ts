@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, OnInit, inject } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  OnDestroy,
+  OnInit,
+  inject,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { HeaderComponent } from '../../layout/header/header.component';
 import { gsap } from 'gsap';
@@ -6,23 +12,51 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FooterComponent } from '../../layout/footer/footer.component';
 import { FirebaseService } from '../../core/service/firebase.service';
 import { WordRotatorDirective } from '../../shared/directives/word-rotator.directive';
+import { Subscription } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { DomSanitizer } from '@angular/platform-browser';
 
 gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-home',
-  imports: [HeaderComponent, FooterComponent, WordRotatorDirective],
+  imports: [
+    HeaderComponent,
+    FooterComponent,
+    WordRotatorDirective,
+    CommonModule,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-export class HomeComponent implements OnInit, AfterViewInit {
+export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private router: Router = inject(Router);
   private fireStoreService = inject(FirebaseService);
   aboutMe: string = '';
+  socialMedia: any[] = [];
+  subscribtions: Subscription[] = [];
+  private sanitizer: DomSanitizer = inject(DomSanitizer);
   ngAfterViewInit(): void {
-    this.fireStoreService.getAbout().subscribe((about) => {
-      this.aboutMe = about;
-    });
+    this.subscribtions.push(
+      this.fireStoreService.getAbout().subscribe((about) => {
+        this.aboutMe = about;
+      })
+    );
+
+    this.subscribtions.push(
+      this.fireStoreService.getSocialMedia().subscribe((medias) => {
+        this.socialMedia = medias.map((media: any) => {
+          const cleanedIcon = media.icon
+            .replace(/<\?xml.*?\?>/, '')
+            .replace(/<!DOCTYPE.*?>/, '');
+          return {
+            ...media,
+            icon: this.sanitizer.bypassSecurityTrustHtml(cleanedIcon),
+          };
+        });
+      })
+    );
+
     //scroll handling
     this.headerScroll();
     //profile handling
@@ -81,5 +115,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
       duration: 1.2,
       ease: 'power3.out',
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subscribtions.forEach((sub) => sub.unsubscribe());
   }
 }

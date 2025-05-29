@@ -74,7 +74,6 @@ export class HeaderComponent implements AfterViewInit, OnInit {
 
   ngAfterViewInit(): void {
     this.firebaseService.getHeaders().subscribe((data: any) => {
-      console.log(data);
       this.listOfHeaders = data;
     });
     this.menuIconTl = gsap.timeline({ paused: true, reversed: true });
