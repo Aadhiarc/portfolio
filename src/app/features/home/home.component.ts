@@ -15,6 +15,7 @@ import { WordRotatorDirective } from '../../shared/directives/word-rotator.direc
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer } from '@angular/platform-browser';
+import { BackgroundFillDirective } from '../../shared/directives/background-fill.directive';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -25,6 +26,7 @@ gsap.registerPlugin(ScrollTrigger);
     FooterComponent,
     WordRotatorDirective,
     CommonModule,
+    BackgroundFillDirective,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
