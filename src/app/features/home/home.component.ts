@@ -37,6 +37,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   aboutMe: string = '';
   socialMedia: any[] = [];
   subscribtions: Subscription[] = [];
+  skills: any[] = [];
   private sanitizer: DomSanitizer = inject(DomSanitizer);
   ngAfterViewInit(): void {
     this.subscribtions.push(
@@ -56,6 +57,12 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
             icon: this.sanitizer.bypassSecurityTrustHtml(cleanedIcon),
           };
         });
+      })
+    );
+
+    this.subscribtions.push(
+      this.fireStoreService.getSkills().subscribe((skills) => {
+        this.skills = skills;
       })
     );
 

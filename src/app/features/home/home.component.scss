@@ -6,6 +6,59 @@ app-header {
   z-index: 1000;
   transition: transform 0.3s ease;
   height: 80px;
+
+  .about-me,
+  .skills {
+    min-height: 100vh;
+  }
+}
+
+.skills {
+  .glass-white-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 0.8rem;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #000;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 200px;
+    height: 200px;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .glass-white-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(31, 38, 135, 0.2);
+  }
+
+  .icon-container {
+    width: 70px;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(4px);
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+
+  .glass-white-card:hover .icon-container {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.8);
+  }
+
+  .icon {
+    font-size: 1.75rem;
+    color: #0d6efd;
+  }
 }
 
 .home-content {
@@ -27,6 +80,12 @@ app-header {
   background: #fff;
   width: fit-content;
   overflow: hidden;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s;
+}
+
+.custom-border-card:hover {
+  transform: scale(1.04) translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
 }
 
 .border-line {
@@ -174,4 +233,100 @@ app-header {
   height: 100%;
   object-fit: contain;
   flex-shrink: 0;
+}
+
+//break points
+@media (max-width: 767.98px) {
+  .home-content {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .about-me {
+    .profile-container {
+      width: 250px !important;
+      height: 250px !important;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      .photo-frame {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center 20%; /* Adjust to move picture downward */
+        }
+      }
+    }
+
+    .about-me-buttons {
+      display: flex;
+      flex-direction: column;
+      div {
+        width: 100% !important;
+        text-align: center;
+      }
+    }
+    .social-media-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+  }
+  .about-me,
+  .skills {
+    flex-direction: column !important;
+    align-items: center !important;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+    height: auto !important;
+  }
+
+  .about-me .row,
+  .skills .row {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .col-md-8 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .name-container {
+    text-align: center;
+    margin-top: 1rem;
+    h4 {
+      font-size: 1rem !important;
+    }
+    h2 {
+      font-size: 2rem !important;
+      text-align: center;
+    }
+  }
+
+  .custom-border-card {
+    width: 100%;
+  }
+
+  .skills .card {
+    max-width: 100% !important;
+  }
+
+  .d-flex.gap-3 {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .d-flex.flex-wrap.gap-4.mt-3 {
+    justify-content: center;
+  }
 }

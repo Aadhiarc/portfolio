@@ -4,64 +4,13 @@
   style="overflow-y: hidden"
 >
   <!-- ABOUT ME-->
-  <section class="about-me container-fluid vh-100 d-flex">
+  <section class="about-me container-fluid d-flex">
     <div class="container-fluid">
       <div class="row justify-content-start">
-        <div class="col-md-8">
-          <h4 class="mb-2 fw-medium">I'm</h4>
-          <h2
-            class="fw-bold text-primary"
-            [appWordRotator]="[
-              'Aadhi',
-              'Android Developer',
-              'Front-End Developer',
-              'Gamer',
-              'Lifter',
-              'Thrillophile'
-            ]"
-          ></h2>
-
-          <p class="lead lh-md fw-small">
-            {{ this.aboutMe }}
-          </p>
-          <div class="d-flex gap-3">
-            <div
-              class="card shadow-sm p-3 d-flex flex-column custom-border-card"
-              style="width: auto; height: auto; overflow: hidden"
-            >
-              <span class="border-line bottom"></span>
-              <span class="border-line right"></span>
-              <span class="border-line top"></span>
-              <span class="border-line left"></span>
-              <p class="p-0 m-0 fw-medium">Resume</p>
-            </div>
-            <div
-              class="card shadow-sm p-3 d-flex flex-column"
-              style="width: auto; height: auto; overflow: hidden"
-            >
-              <p class="p-0 m-0 fw-medium">See My Projects</p>
-            </div>
-          </div>
-          <div class="d-flex flex-wrap gap-4 mt-3">
-            <div
-              *ngFor="let media of socialMedia"
-              style="width: 35px; height: 35px"
-            >
-              <div
-                [innerHTML]="media.icon"
-                class="icon-container w-100 h-100"
-                appBackgroundFill
-                [duration]="0.5"
-                [appBackgroundFill]="media.fillColor"
-                [attr.title]="media.title"
-              ></div>
-            </div>
-          </div>
-        </div>
         <div class="col-md-4 d-flex flex-column align-items-center gap-3">
           <div
             style="width: 100%; max-width: 300px; height: 500px"
-            class="d-flex flex-column align-items-center gap-3"
+            class="profile-container d-flex flex-column align-items-center gap-3"
           >
             <div
               class="photo-frame overflow-hidden rounded-4 shadow-lg"
@@ -76,40 +25,95 @@
             </div>
           </div>
         </div>
+        <div class="col-md-8">
+          <div class="name-container">
+            <h4 class="mb-2 fw-medium">I'm</h4>
+            <h2
+              class="fw-bold text-primary"
+              [appWordRotator]="[
+                'Aadhi',
+                'Android Developer',
+                'Front-End Developer',
+                'Gamer',
+                'Lifter',
+                'Thrillophile'
+              ]"
+            ></h2>
+            <p class="lh-md fw-small">
+              {{ this.aboutMe }}
+            </p>
+          </div>
+
+          <div class="d-flex gap-3 about-me-buttons">
+            <div
+              class="card shadow-sm p-3 d-flex flex-column custom-border-card"
+              style="width: auto; height: auto; overflow: hidden"
+            >
+              <!-- <span class="border-line bottom"></span>
+              <span class="border-line right"></span>
+              <span class="border-line top"></span>
+              <span class="border-line left"></span> -->
+              <p class="p-0 m-0 fw-medium">Resume</p>
+            </div>
+            <div
+              class="card shadow-sm p-3 d-flex flex-column custom-border-card"
+              style="width: auto; height: auto; overflow: hidden"
+            >
+              <!-- <span class="border-line bottom"></span>
+              <span class="border-line right"></span>
+              <span class="border-line top"></span>
+              <span class="border-line left"></span> -->
+              <p class="p-0 m-0 fw-medium">See My Projects</p>
+            </div>
+          </div>
+          <div class="social-media-container">
+            <div
+              class="d-inline-flex flex-wrap gap-3 mt-4"
+              style="width: fit-content"
+            >
+              <div
+                *ngFor="let media of socialMedia"
+                style="width: 30px; height: 30px"
+              >
+                <div
+                  [innerHTML]="media.icon"
+                  class="icon-container w-100 h-100"
+                  appBackgroundFill
+                  [duration]="0.5"
+                  [appBackgroundFill]="media.fillColor"
+                  [attr.title]="media.title"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
   <!-- SKILLS AND TECHNOLOGY -->
-  <section class="skills container-fluid vh-100 d-flex">
+  <section class="skills container-fluid d-flex">
     <div class="container-fluid">
       <div class="row justify-content-start">
         <div class="col">
-          <h4 class="mb-2">Skills and Technologies</h4>
-          <p>
-            I specialize in building efficient and scalable mobile and web
-            applications using modern technologies. My expertise spans across
-            Android development, Java, Kotlin, Firebase, and RESTful APIs, along
-            with a strong grasp of UI/UX principles and software architecture
-            patterns like MVVM.
+          <h2 class="mb-2 text-center fw-bold text-primary">
+            Skills and Technologies
+          </h2>
+          <p class="text-center">
+            I build efficient, scalable mobile and web apps using modern
+            technologies. My skills include Android development with Java and
+            Kotlin, Firebase integration, REST APIs, and Angular for responsive
+            web interfaces — all with a focus on clean architecture and great
+            UI/UX.
           </p>
-          <div class="row g-4">
-            <div class="col-md-4" id="card-1">
-              <div
-                class="card shadow-sm p-3 d-flex flex-column"
-                style="
-                  max-width: 300px;
-                  min-height: 150px;
-                  max-height: 250px;
-                  overflow: hidden;
-                "
-              >
-                <div class="d-flex align-items-center mb-2">
-                  <i class="bi bi-phone fs-2 text-primary me-2"></i>
-                  <h6 class="card-title fw-bold mb-0">Android Development</h6>
+          <div class="row g-4 mt-4">
+            <div *ngFor="let skill of skills; let i = index" class="col-md-4">
+              <div class="glass-white-card">
+                <div class="icon-container mb-3">
+                  <i [ngClass]="skill.icon"></i>
                 </div>
+                <h5 class="card-title fw-semibold mb-2">{{ skill.title }}</h5>
                 <p class="card-text small mb-0">
-                  Skilled in building native Android apps using Java, Kotlin,
-                  and Jetpack libraries.
+                  {{ skill.description }}
                 </p>
               </div>
             </div>
