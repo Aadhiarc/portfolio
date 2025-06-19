@@ -38,6 +38,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   socialMedia: any[] = [];
   subscribtions: Subscription[] = [];
   skills: any[] = [];
+  projects: any[] = [];
   private sanitizer: DomSanitizer = inject(DomSanitizer);
   ngAfterViewInit(): void {
     this.subscribtions.push(
@@ -63,6 +64,12 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.subscribtions.push(
       this.fireStoreService.getSkills().subscribe((skills) => {
         this.skills = skills;
+      })
+    );
+
+    this.subscribtions.push(
+      this.fireStoreService.getProjects().subscribe((projects) => {
+        this.projects = projects;
       })
     );
 

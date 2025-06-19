@@ -122,5 +122,41 @@
       </div>
     </div>
   </section>
+
+  <!-- PROJECTS -->
+  <section class="projects container-fluid d-flex mt-5">
+    <div class="container-fluid">
+      <div class="row justify-content-start">
+        <div class="col">
+          <h2 class="mb-2 text-center fw-bold text-primary">Projects</h2>
+          <p class="text-center">
+            A showcase of the real-world projects I've built, combining clean
+            code, modern UI, and practical problem-solving. From Android apps to
+            responsive web platforms, each project reflects my focus on
+            functionality and user experience.
+          </p>
+          <div class="row g-4 mt-4">
+            <div
+              *ngFor="let project of projects; let i = index"
+              class="col-md-4"
+            >
+              <div class="project-card glass-white-card overflow-hidden p-0">
+                <img
+                  [src]="'assets/images/' + project.imageUrl"
+                  [alt]="project.title"
+                  class="card-image-top"
+                />
+
+                <div class="p-3">
+                  <h5 class="fw-semibold mb-2">{{ project.title }}</h5>
+                  <p class="small mb-0">{{ project.description }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
 <app-footer></app-footer>
