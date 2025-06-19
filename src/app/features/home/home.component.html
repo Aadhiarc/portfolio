@@ -9,12 +9,12 @@
       <div class="row justify-content-start">
         <div class="col-md-4 d-flex flex-column align-items-center gap-3">
           <div
-            style="width: 100%; max-width: 300px; height: 500px"
+            style="width: 100%; max-width: 360px; height: 600px"
             class="profile-container d-flex flex-column align-items-center gap-3"
           >
             <div
               class="photo-frame overflow-hidden rounded-4 shadow-lg"
-              style="width: 100%; max-width: 280px; height: 400px"
+              style="width: 100%; max-width: 340px; height: 500px"
               id="photoContainer"
             >
               <img
@@ -27,9 +27,9 @@
         </div>
         <div class="col-md-8">
           <div class="name-container">
-            <h4 class="mb-2 fw-medium">I'm</h4>
+            <h2 class="mb-2 fw-medium">I'm</h2>
             <h2
-              class="fw-bold text-primary"
+              class="fw-bold text-primary identity-title"
               [appWordRotator]="[
                 'Aadhi',
                 'Android Developer',
@@ -39,7 +39,7 @@
                 'Thrillophile'
               ]"
             ></h2>
-            <p class="lh-md fw-small">
+            <p class="about-me-description">
               {{ this.aboutMe }}
             </p>
           </div>
@@ -73,7 +73,7 @@
             >
               <div
                 *ngFor="let media of socialMedia"
-                style="width: 30px; height: 30px"
+                style="width: 40px; height: 40px"
               >
                 <div
                   [innerHTML]="media.icon"
@@ -98,7 +98,7 @@
           <h2 class="mb-2 text-center fw-bold text-primary">
             Skills and Technologies
           </h2>
-          <p class="text-center">
+          <p class="text-center sub-description">
             I build efficient, scalable mobile and web apps using modern
             technologies. My skills include Android development with Java and
             Kotlin, Firebase integration, REST APIs, and Angular for responsive
@@ -112,7 +112,7 @@
                   <i [ngClass]="skill.icon"></i>
                 </div>
                 <h5 class="card-title fw-semibold mb-2">{{ skill.title }}</h5>
-                <p class="card-text small mb-0">
+                <p class="card-text small mb-0 card-description">
                   {{ skill.description }}
                 </p>
               </div>
@@ -129,7 +129,7 @@
       <div class="row justify-content-start">
         <div class="col">
           <h2 class="mb-2 text-center fw-bold text-primary">Projects</h2>
-          <p class="text-center">
+          <p class="text-center sub-description">
             A showcase of the real-world projects I've built, combining clean
             code, modern UI, and practical problem-solving. From Android apps to
             responsive web platforms, each project reflects my focus on
@@ -149,7 +149,9 @@
 
                 <div class="p-3">
                   <h5 class="fw-semibold mb-2">{{ project.title }}</h5>
-                  <p class="small mb-0">{{ project.description }}</p>
+                  <p class="small mb-0 card-description">
+                    {{ project.description }}
+                  </p>
                 </div>
               </div>
             </div>

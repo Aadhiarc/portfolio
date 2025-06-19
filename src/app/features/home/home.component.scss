@@ -6,11 +6,29 @@ app-header {
   z-index: 1000;
   transition: transform 0.3s ease;
   height: 80px;
-
-  .about-me,
-  .skills {
-    min-height: 100vh;
-  }
+}
+.about-me-description {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: #333;
+  font-weight: 400;
+  max-width: 900px;
+}
+.sub-description {
+  font-size: 1.2rem;
+  line-height: 1.4;
+  color: #333;
+  font-weight: 400;
+}
+.card-description {
+  font-size: 1.1rem;
+  line-height: 1.2;
+  color: #333;
+  font-weight: 400;
+}
+.about-me,
+.skills {
+  min-height: 100vh;
 }
 .glass-white-card {
   background: rgba(255, 255, 255, 0.9);
@@ -33,6 +51,16 @@ app-header {
 .glass-white-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 12px 30px rgba(31, 38, 135, 0.2);
+}
+.about-me {
+  .identity-title {
+    font-size: 4rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .about-me-buttons {
+    font-size: 1.2rem;
+  }
 }
 .skills {
   .icon-container {
