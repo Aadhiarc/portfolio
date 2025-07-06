@@ -139,3 +139,41 @@
     transform: scaleX(100%);
   }
 }
+
+.header-container-md {
+  padding-left: 14rem;
+  padding-right: 14rem;
+}
+
+@media (max-width: 768px) {
+  .header-container-md {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+
+.aadhi-icon-text {
+  font-family: "Roboto Mono", monospace;
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.2rem;
+  margin: 0;
+  padding: 0.4rem 1rem;
+
+  /* Glassmorphism Styles */
+  background: rgba(0, 0, 0, 0.1); /* Soft dark overlay for white bg */
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 0.75rem;
+
+  color: #111; /* Dark text for contrast on white */
+  display: inline-block;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  user-select: none;
+}

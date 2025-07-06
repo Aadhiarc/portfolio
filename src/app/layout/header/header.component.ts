@@ -13,16 +13,14 @@ import { FirebaseService } from '../../core/service/firebase.service';
 import UnderlineAnimateDirective from '../../shared/directives/underline-animate.directive';
 import { ClickAnimateDirective } from '../../shared/directives/click-animate.directive';
 import { ThemeService } from '../../core/service/theme.service';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+
+gsap.registerPlugin(ScrollToPlugin);
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [
-    CommonModule,
-    SwapAnimateDirective,
-    UnderlineAnimateDirective,
-    ClickAnimateDirective,
-  ],
+  imports: [CommonModule, SwapAnimateDirective, UnderlineAnimateDirective],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
@@ -38,6 +36,17 @@ export class HeaderComponent implements AfterViewInit, OnInit {
   private themeService = inject(ThemeService);
   ngOnInit(): void {
     this.themeService.loadStoredTheme();
+  }
+
+  scrollToSection(sectionId: string) {
+    gsap.to(window, {
+      duration: 1,
+      scrollTo: {
+        y: `#${sectionId}`,
+        offsetY: 80, // adjust for fixed header height
+      },
+      ease: 'power2.out',
+    });
   }
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;

@@ -1,10 +1,13 @@
 <div
-  class="d-flex vw-100 position-relative header-container bg-light pt-2 pb-2 px-2 pt-md-4 pb-md-3 px-md-4"
+  class="d-flex vw-100 position-relative header-container bg-light pt-2 pb-2 pt-md-4 pb-md-3 header-container-md"
 >
   <div class="container-fluid d-flex justify-content-between">
-    <!-- <div class="d-flex d-md-none align-items-center" (click)="toggleMenu()">
-      <h4 class="menu-title" #menuTitle>{{ isMenuOpen ? "Close" : "Menu" }}</h4>
-    </div> -->
+    <!-- <h4 class="d-none d-md-block me-4 link" appClickAnimate>
+      To get in touch
+      <span class="dot"></span>
+      <span class="underline"></span>
+    </h4> -->
+    <h3 class="aadhi-icon-text d-none d-md-block me-4 link">Aadhi.me</h3>
     <div class="d-flex align-items-center d-md-none" (click)="toggleMenu()">
       <div class="hamburger" id="hamburger">
         <span class="line line-1"></span>
@@ -18,6 +21,7 @@
         class="hover-container"
         *ngFor="let header of listOfHeaders; let i = index"
         swapAnimate
+        (click)="scrollToSection(header.title)"
       >
         <div class="text-wrapper">
           <h4 class="text text-top">
@@ -31,11 +35,7 @@
         <span class="dot">.</span>
       </div>
     </div>
-    <h4 class="d-none d-md-block me-4 link" appClickAnimate>
-      To get in touch
-      <span class="dot"></span>
-      <span class="underline"></span>
-    </h4>
+
     <img
       src="assets/images/img-logo.png"
       class="img-fluid"

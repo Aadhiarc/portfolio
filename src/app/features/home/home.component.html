@@ -1,89 +1,88 @@
 <app-header></app-header>
-<div
-  class="home-content container-fluid d-flex flex-column align-items-center px-5 py-5"
-  style="overflow-y: hidden"
->
-  <!-- ABOUT ME-->
-  <section class="about-me container-fluid d-flex">
-    <div class="container-fluid">
-      <div class="row justify-content-start">
-        <div class="col-md-4 d-flex flex-column align-items-center gap-3">
+<div class="home-content container-fluid">
+  <!-- HOME -->
+  <section
+    #section
+    id="Home"
+    class="about-me hidden container-fluid section-padding section-fullscreen"
+  >
+    <div class="row justify-content-start">
+      <div class="col-md-4 d-flex flex-column align-items-center gap-3">
+        <div
+          style="width: 100%; max-width: 360px; height: auto"
+          class="profile-container d-flex flex-column align-items-center gap-3"
+        >
           <div
-            style="width: 100%; max-width: 360px; height: 600px"
-            class="profile-container d-flex flex-column align-items-center gap-3"
+            class="photo-frame overflow-hidden rounded-4 shadow-lg"
+            style="width: 100%; max-width: 340px; height: 500px"
+            id="photoContainer"
           >
-            <div
-              class="photo-frame overflow-hidden rounded-4 shadow-lg"
-              style="width: 100%; max-width: 340px; height: 500px"
-              id="photoContainer"
-            >
-              <img
-                src="assets/images/profile_pic.jpg"
-                alt="Aadhi"
-                class="img-fluid h-100 w-100 object-fit-cover"
-              />
-            </div>
+            <img
+              src="assets/images/profile_pic.jpg"
+              alt="Aadhi"
+              class="img-fluid h-100 w-100 object-fit-cover"
+            />
           </div>
         </div>
-        <div class="col-md-8">
-          <div class="name-container">
-            <h2 class="mb-2 fw-medium">I'm</h2>
-            <h2
-              class="fw-bold text-primary identity-title"
-              [appWordRotator]="[
-                'Aadhi',
-                'Android Developer',
-                'Front-End Developer',
-                'Gamer',
-                'Lifter',
-                'Thrillophile'
-              ]"
-            ></h2>
-            <p class="about-me-description">
-              {{ this.aboutMe }}
-            </p>
-          </div>
+      </div>
+      <div class="col-md-8">
+        <div class="name-container">
+          <h2 class="mb-2 fw-medium">I'm</h2>
+          <h2
+            class="fw-bold text-primary identity-title"
+            [appWordRotator]="[
+              'Aadhi',
+              'Android Developer',
+              'Front-End Developer',
+              'Gamer',
+              'Lifter',
+              'Thrillophile'
+            ]"
+          ></h2>
+          <p class="about-me-description">
+            {{ this.aboutMe }}
+          </p>
+        </div>
 
-          <div class="d-flex gap-3 about-me-buttons">
-            <div
-              class="card shadow-sm p-3 d-flex flex-column custom-border-card"
-              style="width: auto; height: auto; overflow: hidden"
-            >
-              <!-- <span class="border-line bottom"></span>
+        <div class="d-flex gap-3 about-me-buttons">
+          <div
+            class="card shadow-sm p-3 d-flex flex-column custom-border-card"
+            style="width: auto; height: auto; overflow: hidden"
+          >
+            <!-- <span class="border-line bottom"></span>
               <span class="border-line right"></span>
               <span class="border-line top"></span>
               <span class="border-line left"></span> -->
-              <p class="p-0 m-0 fw-medium">Resume</p>
-            </div>
-            <div
-              class="card shadow-sm p-3 d-flex flex-column custom-border-card"
-              style="width: auto; height: auto; overflow: hidden"
-            >
-              <!-- <span class="border-line bottom"></span>
-              <span class="border-line right"></span>
-              <span class="border-line top"></span>
-              <span class="border-line left"></span> -->
-              <p class="p-0 m-0 fw-medium">See My Projects</p>
-            </div>
+            <p class="p-0 m-0 fw-medium">Resume</p>
           </div>
-          <div class="social-media-container">
+          <div
+            class="card shadow-sm p-3 d-flex flex-column custom-border-card"
+            style="width: auto; height: auto; overflow: hidden"
+          >
+            <!-- <span class="border-line bottom"></span>
+              <span class="border-line right"></span>
+              <span class="border-line top"></span>
+              <span class="border-line left"></span> -->
+            <p class="p-0 m-0 fw-medium">See My Projects</p>
+          </div>
+        </div>
+        <div class="social-media-container">
+          <div
+            class="d-inline-flex flex-wrap gap-4 mt-4"
+            style="width: fit-content"
+          >
             <div
-              class="d-inline-flex flex-wrap gap-3 mt-4"
-              style="width: fit-content"
+              *ngFor="let media of socialMedia"
+              style="width: 40px; height: 40px"
             >
               <div
-                *ngFor="let media of socialMedia"
-                style="width: 40px; height: 40px"
-              >
-                <div
-                  [innerHTML]="media.icon"
-                  class="icon-container w-100 h-100"
-                  appBackgroundFill
-                  [duration]="0.5"
-                  [appBackgroundFill]="media.fillColor"
-                  [attr.title]="media.title"
-                ></div>
-              </div>
+                [innerHTML]="media.icon"
+                class="icon-container w-100 h-100"
+                appBackgroundFill
+                [duration]="0.5"
+                [appBackgroundFill]="media.fillColor"
+                [attr.title]="media.title"
+              ></div>
             </div>
           </div>
         </div>
@@ -91,31 +90,33 @@
     </div>
   </section>
   <!-- SKILLS AND TECHNOLOGY -->
-  <section class="skills container-fluid d-flex">
-    <div class="container-fluid">
-      <div class="row justify-content-start">
-        <div class="col">
-          <h2 class="mb-2 text-center fw-bold text-primary">
-            Skills and Technologies
-          </h2>
-          <p class="text-center sub-description">
-            I build efficient, scalable mobile and web apps using modern
-            technologies. My skills include Android development with Java and
-            Kotlin, Firebase integration, REST APIs, and Angular for responsive
-            web interfaces — all with a focus on clean architecture and great
-            UI/UX.
-          </p>
-          <div class="row g-4 mt-4">
-            <div *ngFor="let skill of skills; let i = index" class="col-md-4">
-              <div class="glass-white-card">
-                <div class="icon-container mb-3">
-                  <i [ngClass]="skill.icon"></i>
-                </div>
-                <h5 class="card-title fw-semibold mb-2">{{ skill.title }}</h5>
-                <p class="card-text small mb-0 card-description">
-                  {{ skill.description }}
-                </p>
+  <section
+    #section
+    id="Skills"
+    class="skills hidden container-fluid section-padding"
+  >
+    <div class="row justify-content-start">
+      <div class="col-12">
+        <h2 class="mb-3 text-center fw-bold text-primary">
+          Skills and Technologies
+        </h2>
+        <p class="text-center sub-description">
+          I build efficient, scalable mobile and web apps using modern
+          technologies. My skills include Android development with Java and
+          Kotlin, Firebase integration, REST APIs, and Angular for responsive
+          web interfaces — all with a focus on clean architecture and great
+          UI/UX.
+        </p>
+        <div class="row g-4 mt-4">
+          <div *ngFor="let skill of skills; let i = index" class="col-md-4">
+            <div class="glass-white-card">
+              <div class="icon-container mb-3">
+                <i [ngClass]="skill.icon"></i>
               </div>
+              <h5 class="card-title fw-semibold mb-2">{{ skill.title }}</h5>
+              <p class="card-text small mb-0 card-description">
+                {{ skill.description }}
+              </p>
             </div>
           </div>
         </div>
@@ -124,37 +125,162 @@
   </section>
 
   <!-- PROJECTS -->
-  <section class="projects container-fluid d-flex mt-5">
-    <div class="container-fluid">
-      <div class="row justify-content-start">
-        <div class="col">
-          <h2 class="mb-2 text-center fw-bold text-primary">Projects</h2>
-          <p class="text-center sub-description">
-            A showcase of the real-world projects I've built, combining clean
-            code, modern UI, and practical problem-solving. From Android apps to
-            responsive web platforms, each project reflects my focus on
-            functionality and user experience.
-          </p>
-          <div class="row g-4 mt-4">
-            <div
-              *ngFor="let project of projects; let i = index"
-              class="col-md-4"
-            >
-              <div class="project-card glass-white-card overflow-hidden p-0">
-                <img
-                  [src]="'assets/images/' + project.imageUrl"
-                  [alt]="project.title"
-                  class="card-image-top"
-                />
+  <section
+    #section
+    id="Projects"
+    class="projects hidden container-fluid section-padding"
+  >
+    <div class="row justify-content-start">
+      <div class="col">
+        <h2 class="mb-3 text-center fw-bold text-primary">Projects</h2>
+        <p class="text-center sub-description">
+          A showcase of the real-world projects I've built, combining clean
+          code, modern UI, and practical problem-solving. From Android apps to
+          responsive web platforms, each project reflects my focus on
+          functionality and user experience.
+        </p>
+        <div class="row g-4 mt-4">
+          <div *ngFor="let project of projects; let i = index" class="col-md-4">
+            <div class="project-card glass-white-card overflow-hidden p-0">
+              <img
+                [src]="'assets/images/' + project.imageUrl"
+                [alt]="project.title"
+                class="card-image-top"
+              />
 
-                <div class="p-3">
-                  <h5 class="fw-semibold mb-2">{{ project.title }}</h5>
-                  <p class="small mb-0 card-description">
-                    {{ project.description }}
-                  </p>
+              <div class="p-3">
+                <h5 class="fw-semibold mb-2">{{ project.title }}</h5>
+                <p class="small mb-0 card-description">
+                  {{ project.description }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- HOME -->
+  <section #section id="Contact" class="contact section-padding">
+    <div class="row justify-content-start">
+      <div class="col">
+        <h2 class="mb-3 text-center fw-bold text-primary">Contact Me</h2>
+        <p class="text-center sub-description">
+          Let's work together on your next project
+        </p>
+        <div class="row justify-content-center mt-5">
+          <div class="col-12 col-md-3 d-flex flex-column gap-3 mb-4 mb-md-0">
+            <div class="contact-card d-flex flex-row p-3 w-100">
+              <div class="me-3 fs-3 text-primary">
+                <i class="bi bi-envelope-at-fill"></i>
+              </div>
+              <div>
+                <h5 class="card-title">Email</h5>
+                <p class="card-text text-muted">aadhiexample.com</p>
+              </div>
+            </div>
+            <div class="contact-card d-flex flex-row p-3 w-100">
+              <div class="me-3 fs-3 text-primary">
+                <i class="bi bi-geo-alt-fill"></i>
+              </div>
+              <div>
+                <h5 class="card-title">Location</h5>
+                <p class="card-text text-muted">Hosur,Tamil Nadu</p>
+              </div>
+            </div>
+            <div class="contact-card d-flex flex-row p-3 w-100">
+              <div class="me-3 fs-3 text-primary">
+                <i class="bi bi-telephone-fill"></i>
+              </div>
+              <div>
+                <h5 class="card-title">Social</h5>
+                <div class="d-flex">
+                  <a
+                    href="#"
+                    style="
+                      text-decoration: none;
+                      margin-left: 2px;
+                      margin-right: 2px;
+                    "
+                    class="text-muted"
+                    >Instagram</a
+                  >
+                  <a
+                    href="#"
+                    style="
+                      text-decoration: none;
+                      margin-left: 2px;
+                      margin-right: 2px;
+                    "
+                    class="text-muted"
+                    >Linkedln</a
+                  >
+                  <a
+                    href="#"
+                    style="
+                      text-decoration: none;
+                      margin-left: 2px;
+                      margin-right: 2px;
+                    "
+                    class="text-muted"
+                    >GitHub</a
+                  >
                 </div>
               </div>
             </div>
+          </div>
+          <div class="col-12 col-md-8">
+            <form class="contact-form contact-card-form">
+              <div class="row">
+                <div class="form-group">
+                  <div class="my-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input
+                      type="text"
+                      class="form-control p-2"
+                      id="name"
+                      placeholder="Your Name"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input
+                      type="email"
+                      class="form-control p-2"
+                      id="email"
+                      placeholder="Your email"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="mb-3">
+                    <label for="message" class="form-label">Your Message</label>
+                    <textarea
+                      class="form-control p-2"
+                      id="message"
+                      rows="4"
+                      placeholder="Type your message here..."
+                    ></textarea>
+                  </div>
+                </div>
+                <button
+                  type="submit"
+                  class="card shadow-sm p-3 d-flex flex-column custom-border-card ms-md-3"
+                  style="
+                    width: fit-content;
+                    height: auto;
+                    overflow: hidden;
+                    min-width: 120px;
+                  "
+                >
+                  <p class="p-0 m-0 fw-medium">Submit</p>
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>

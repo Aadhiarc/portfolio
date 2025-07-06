@@ -7,28 +7,58 @@ app-header {
   transition: transform 0.3s ease;
   height: 80px;
 }
+
+.hidden {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 .about-me-description {
-  font-size: 1.3rem;
+  font-size: 1rem;
   line-height: 1.8;
   color: #333;
   font-weight: 400;
-  max-width: 900px;
+  max-width: 1000px;
 }
 .sub-description {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   line-height: 1.4;
   color: #333;
   font-weight: 400;
 }
 .card-description {
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1.2;
   color: #333;
   font-weight: 400;
 }
-.about-me,
-.skills {
-  min-height: 100vh;
+.section-fullscreen {
+  display: flex;
+  align-items: center;
+}
+// .skills,
+// .projects {
+//   min-height: 100vh;
+//   display: flex;
+//   align-items: top;
+// }
+.section-padding {
+  padding-left: 14rem;
+  padding-right: 14rem;
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
 .glass-white-card {
   background: rgba(255, 255, 255, 0.9);
@@ -59,7 +89,7 @@ app-header {
     margin-bottom: 0.5rem;
   }
   .about-me-buttons {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 }
 .skills {
@@ -89,12 +119,14 @@ app-header {
 
 .projects {
   .project-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     width: 100%;
     border-radius: 0.8rem;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
     background: rgba(255, 255, 255, 0.9);
-    height: auto;
-    min-height: 350px;
+    height: 100%;
   }
 
   .project-card:hover .card-image-top {
@@ -110,6 +142,64 @@ app-header {
     border-top-left-radius: 0.8rem;
     border-top-right-radius: 0.8rem;
     transition: background 0.3s ease, transform 0.3s ease;
+  }
+}
+
+.contact {
+  .contact-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 0.8rem;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #000;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: auto;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    i {
+      transition: color 0.3s ease;
+    }
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .card-text {
+      font-size: 1rem;
+      line-height: 1.2;
+      color: #333;
+      font-weight: 400;
+    }
+  }
+
+  .contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(31, 38, 135, 0.2);
+
+    i {
+      color: #0d6efd;
+    }
+  }
+  .contact-card-form {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 0.8rem;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #000;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: auto;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
   }
 }
 
@@ -334,7 +424,8 @@ app-header {
     }
   }
   .about-me,
-  .skills {
+  .skills,
+  .contact {
     flex-direction: column !important;
     align-items: center !important;
     padding-top: 2rem !important;
@@ -343,7 +434,8 @@ app-header {
   }
 
   .about-me .row,
-  .skills .row {
+  .skills .row,
+  .contact .row {
     flex-direction: column !important;
     align-items: center !important;
   }

@@ -4,6 +4,9 @@ import {
   OnDestroy,
   OnInit,
   inject,
+  QueryList,
+  ViewChildren,
+  ElementRef,
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { HeaderComponent } from '../../layout/header/header.component';
@@ -40,6 +43,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   skills: any[] = [];
   projects: any[] = [];
   private sanitizer: DomSanitizer = inject(DomSanitizer);
+  @ViewChildren('section') sections!: QueryList<ElementRef>;
+
   ngAfterViewInit(): void {
     this.subscribtions.push(
       this.fireStoreService.getAbout().subscribe((about) => {
@@ -72,6 +77,24 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         this.projects = projects;
       })
     );
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const target = entry.target as HTMLElement;
+          if (entry.isIntersecting) {
+            target.classList.add('show');
+            observer.unobserve(target); // Only animate once
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+      }
+    );
+
+    this.sections.forEach((section) => {
+      observer.observe(section.nativeElement);
+    });
 
     //scroll handling
     this.headerScroll();
