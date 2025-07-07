@@ -20,6 +20,7 @@
     "@angular/platform-browser-dynamic": "^19.2.11",
     "@angular/router": "^19.2.11",
     "@fortawesome/fontawesome-free": "^6.7.2",
+    "@tsparticles/angular": "^3.0.0",
     "bootstrap": "^5.3.6",
     "bootstrap-icons": "^1.13.1",
     "firebase": "^11.7.3",
@@ -27,6 +28,7 @@
     "rxjs": "~7.8.0",
     "split-type": "^0.3.4",
     "tslib": "^2.3.0",
+    "tsparticles": "^3.8.1",
     "zone.js": "~0.15.0"
   },
   "devDependencies": {

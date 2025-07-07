@@ -19,6 +19,9 @@ import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer } from '@angular/platform-browser';
 import { BackgroundFillDirective } from '../../shared/directives/background-fill.directive';
+import { NgxParticlesModule } from '@tsparticles/angular';
+
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -30,6 +33,7 @@ gsap.registerPlugin(ScrollTrigger);
     WordRotatorDirective,
     CommonModule,
     BackgroundFillDirective,
+   
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -45,62 +49,67 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private sanitizer: DomSanitizer = inject(DomSanitizer);
   @ViewChildren('section') sections!: QueryList<ElementRef>;
 
-  ngAfterViewInit(): void {
-    this.subscribtions.push(
-      this.fireStoreService.getAbout().subscribe((about) => {
-        this.aboutMe = about;
-      })
-    );
+ 
+ngAfterViewInit(): void {
+  // Firestore data subscriptions
+  this.subscribtions.push(
+    this.fireStoreService.getAbout().subscribe((about) => {
+      this.aboutMe = about;
+    })
+  );
 
-    this.subscribtions.push(
-      this.fireStoreService.getSocialMedia().subscribe((medias) => {
-        this.socialMedia = medias.map((media: any) => {
-          const cleanedIcon = media.icon
-            .replace(/<\?xml.*?\?>/, '')
-            .replace(/<!DOCTYPE.*?>/, '');
-          return {
-            ...media,
-            icon: this.sanitizer.bypassSecurityTrustHtml(cleanedIcon),
-          };
-        });
-      })
-    );
+  this.subscribtions.push(
+    this.fireStoreService.getSocialMedia().subscribe((medias) => {
+      this.socialMedia = medias.map((media: any) => {
+        const cleanedIcon = media.icon
+          .replace(/<\?xml.*?\?>/, '')
+          .replace(/<!DOCTYPE.*?>/, '');
+        return {
+          ...media,
+          icon: this.sanitizer.bypassSecurityTrustHtml(cleanedIcon),
+        };
+      });
+    })
+  );
 
-    this.subscribtions.push(
-      this.fireStoreService.getSkills().subscribe((skills) => {
-        this.skills = skills;
-      })
-    );
+  this.subscribtions.push(
+    this.fireStoreService.getSkills().subscribe((skills) => {
+      this.skills = skills;
+    })
+  );
 
-    this.subscribtions.push(
-      this.fireStoreService.getProjects().subscribe((projects) => {
-        this.projects = projects;
-      })
-    );
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const target = entry.target as HTMLElement;
-          if (entry.isIntersecting) {
-            target.classList.add('show');
-            observer.unobserve(target); // Only animate once
-          }
-        });
-      },
-      {
-        threshold: 0.2,
-      }
-    );
+  this.subscribtions.push(
+    this.fireStoreService.getProjects().subscribe((projects) => {
+      this.projects = projects;
+    })
+  );
 
-    this.sections.forEach((section) => {
-      observer.observe(section.nativeElement);
-    });
+  // Intersection observer animation
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const target = entry.target as HTMLElement;
+        if (entry.isIntersecting) {
+          target.classList.add('show');
+          observer.unobserve(target);
+        }
+      });
+    },
+    {
+      threshold: 0.2,
+    }
+  );
 
-    //scroll handling
-    this.headerScroll();
-    //profile handling
-    this.profileAnimation();
-  }
+  this.sections.forEach((section) => {
+    observer.observe(section.nativeElement);
+  });
+
+
+  // Scroll & Animation setup
+  this.headerScroll();
+  this.profileAnimation();
+}
+
   ngOnInit(): void {}
 
   headerScroll() {
